@@ -8,10 +8,6 @@
     "openmaptiles":{
       "type":"vector",
       "url":"mbtiles://{unitedkingdom}"
-    },
-    "zurich":{
-      "type":"vector",
-      "url":"mbtiles://{zurich}"
     }
   },
   "glyphs":"{fontstack}/{range}.pbf",
