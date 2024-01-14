@@ -7,7 +7,11 @@
       "mbtiles": "C:\\tileserver-gl",
       "pmtiles": "C:\\tileserver-gl"
     },
-    "serveAllFonts":true
+    "serveAllFonts":true,
+    "domains": [
+      "localhost:8082",
+      "127.0.0.1:8082"
+    ]
   },
   "styles": {
     "basic-preview": {
