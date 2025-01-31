@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   ct:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository ✨ (non-dependabot)
         if: ${{ github.actor != 'dependabot[bot]' }}
@@ -60,7 +60,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Docker Build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: false
