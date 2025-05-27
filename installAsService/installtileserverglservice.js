@@ -10,9 +10,9 @@ var Service = require('node-windows').Service;
 var svc = new Service({
   name:'TileServer-gl',
   description: 'TileServer-gl (native) Service.',
-  script: 'e:\\tileserver-gl\\src\\main.js',
+  script: 'c:\\tileserver-gl\\src\\main.js',
   scriptOptions: '--port 8082',  
-  workingDirectory: 'e:\\tileserver-gl'
+  workingDirectory: 'c:\\tileserver-gl'
   //, allowServiceLogon: true -- set to network service using service.msc
 });
 

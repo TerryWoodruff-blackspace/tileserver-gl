@@ -8,16 +8,17 @@ Styles
 ======
 * Styles are served at ``/styles/{id}/style.json`` (+ array at ``/styles.json``)
 
-  * Sprites at ``/styles/{id}/sprite[@2x].{format}``
+  * Sprites at ``/styles/{id}/sprite[/spriteID][@2x].{format}``
   * Fonts at ``/fonts/{fontstack}/{start}-{end}.pbf``
 
 Rendered tiles
 ==============
-* Rendered tiles are served at ``/styles/{id}/{z}/{x}/{y}[@2x].{format}``
+* Rendered tiles are served at ``/styles/{id}[/{tileSize}]/{z}/{x}/{y}[@2x].{format}``
 
-  * The optional ``@2x`` (or ``@3x``, ``@4x``) part can be used to render HiDPI (retina) tiles
+  * The optional ratio ``@2x`` (ex.  ``@2x``, ``@3x``, ``@4x``) part can be used to render HiDPI (retina) tiles
+  * The optional tile size ``/{tileSize}`` (ex. ``/256``, ``/512``). if omitted, tileSize defaults to 256.
   * Available formats: ``png``, ``jpg`` (``jpeg``), ``webp``
-  * TileJSON at ``/styles/{id}.json``
+  * TileJSON at ``/styles[/{tileSize}]/{id}.json``
 
 * The rendered tiles are not available in the ``tileserver-gl-light`` version.
 
@@ -76,7 +77,7 @@ Static images
         * scales with ``scale`` parameter since image placement is relative to it's size
         * e.g. ``2,-4`` - Image will be moved 2 pixel to the right and 4 pixel in the upwards direction from the provided location
 
-    * e.g. ``5.9,45.8|marker-start.svg|scale:0.5|offset:2,-4``
+    * e.g. ``5.9,45.8|marker-icon.png|scale:0.5|offset:2,-4``
     * can be provided multiple times
 
   * ``padding`` - "percentage" padding for fitted endpoints (area-based and path autofit)
@@ -91,17 +92,41 @@ Static images
 
 Source data
 ===========
-* Source data are served at ``/data/{mbtiles}/{z}/{x}/{y}.{format}``
+* Source data are served at ``/data/{id}/{z}/{x}/{y}.{format}``
 
   * Format depends on the source file (usually ``png`` or ``pbf``)
 
     * ``geojson`` is also available (useful for inspecting the tiles) in case the original format is ``pbf``
 
-  * TileJSON at ``/data/{mbtiles}.json``
+  * TileJSON at ``/data/{id}.json``
+
+  * If terrain mbtile data is served and ``encoding`` is configured (see config) the elevation can be queried 
+
+    * by ``/data/{id}/elevation/{z}/{x}/{y}`` for the tile
+
+    * or ``/data/{id}/elevation/{z}/{long}/{lat}`` for the coordinate
+
+    * the result will be a json object like ``{"z":7,"x":68,"y":45,"red":134,"green":66,"blue":0,"latitude":11.84069,"longitude":46.04798,"elevation":1602}``
+
+  * The elevation api is not available in the ``tileserver-gl-light`` version.
+
+Static files
+===========
+* Static files are served at ``/files/{filename}``
+
+  * The source folder can be configured (``options.paths.files``), default is ``public/files``
+
+  * This feature can be used to serve ``geojson`` files for styles and rendered tiles.
+
+    * Keep in mind, that each rendered tile loads the whole geojson file, if performance matters a conversion to a tiled format (e.g. with https://github.com/felt/tippecanoe)may be a better approch.
+
+    * Use ``file://{filename}`` to have matching paths for both endoints
 
 TileJSON arrays
 ===============
-Array of all TileJSONs is at ``/index.json`` (``/rendered.json``; ``/data.json``)
+Array of all TileJSONs is at ``[/{tileSize}]/index.json`` (``[/{tileSize}]/rendered.json``; ``/data.json``)
+
+  * The optional tile size ``/{tileSize}`` (ex. ``/256``, ``/512``). if omitted, tileSize defaults to 256.
 
 List of available fonts
 =======================

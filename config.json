@@ -36,17 +36,37 @@
         "bounds": [-133.0637,31.32659,-102.03551,49.45605],
         "center":[-117.5496,40.39132,4]        
       }
+    },
+    "quebec": {
+      "style": "basic-preview/socal.json",
+      "tilejson": {
+        "bounds": [-83.1626566, 43.0207176, -55.5168244, 70.7437374],
+        "center":[-53.0000,70.000]        
+      }
+    },
+    "aquitaine": {
+      "style": "basic-preview/aquitaine.json",
+      "tilejson": {
+        "bounds":[-7.5000, 41.7277683, 3.3222444,46.2951362],
+        "center":[0.410237, 45.018943]
+      }
     }
   },
   "data": {
     "zurich": {
-      "mbtiles": "zurich_switzerland.mbtiles"
+      "mbtiles": "data\\zurich_switzerland.mbtiles"
     },
     "unitedkingdom": {
       "mbtiles": "data\\united-kingdom.mbtiles"
     },
     "socal": {
       "mbtiles": "data\\us-west.osm.mbtiles"
+    },
+    "quebec": {
+      "mbtiles": "data\\quebec-latest.mbtiles"
+    },
+    "aquitaine": {
+      "mbtiles": "data\\aquitaine.mbtiles"
     }
   }
 }
