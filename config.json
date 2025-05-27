@@ -43,8 +43,14 @@
         "bounds": [-83.1626566, 43.0207176, -55.5168244, 70.7437374],
         "center":[-53.0000,70.000]        
       }
+    },
+    "aquitaine": {
+      "style": "basic-preview/aquitaine.json",
+      "tilejson": {
+        "bounds":[-7.5000, 41.7277683, 3.3222444,46.2951362],
+        "center":[0.410237, 45.018943]
+      }
     }
-
   },
   "data": {
     "zurich": {
@@ -58,7 +64,9 @@
     },
     "quebec": {
       "mbtiles": "data\\quebec-latest.mbtiles"
-
+    },
+    "aquitaine": {
+      "mbtiles": "data\\aquitaine.mbtiles"
     }
   }
 }
